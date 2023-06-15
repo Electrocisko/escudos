@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/', clubesRouter)
+app.use('/', clubesRouter)
 
 app.listen(PORT, () => {
     console.log(`Servidor levantado en http://localhost:${PORT}`)
