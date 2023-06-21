@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adivina Escudos</title>
+    <title>Escudo</title>
+    <link rel="stylesheet" href="styles/styleEscudo.css">
 </head>
 <body>
-    <h1>Escudos de futbol</h1>
 
-   <ul>
-    <% clubes.forEach(club => { %>
-        <li>
-            <img src="<%= club.imageUrl %>" alt="" width="200px" height="200px">
-        </li>
-    <% }) %>
-   </ul>
-
-    <section>
-
+    <section class="card">
+        <figure class="card-image-container">
+            <img id="image-logo" src="https:\/\/www.escudosfc.com.br\/images\/velez.png" alt="Escudo " height="200px">
+        </figure>
+        <div class="card-buttons-container">
+            <button id="btn_1">Velez</button>
+            <button id="btn_2">River</button>
+            <button id="btn_3">Talleres</button>
+        </div>
     </section>
+    <script src="scripts/scriptEscudo.js"></script>
+
 </body>
 </html>

@@ -7,40 +7,21 @@ const randomClubId = () => {
 return idClub
 }
 
-
-// const getAllClubs = async (req, res) => {
-//   try {
-//     res.status(200).json({
-//       status: "succes",
-//       clubes,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       status: "error",
-//       message: error,
-//     });
-//   }
-// };
-
-const getAllClubs =  (req, res) => {
-  res.render('pages/index',{clubes: clubes})
-};
-
-const getRandomClub = (req,res)=> {
-  const idClub = randomClubId()
-  const club = clubes.find( (item) => item.id == idClub  )
-
-  try {
-    res.render('pages/escudo',{club})
-  } catch (error) {
-    res.status(500).json({
-      status: "error",
-      message: error,
-    });
+const getRandomClub = (req,res) => {
+  const ThreeClubs = [];   
+  let club; 
+  let idClub;
+  for(let i=0;i<3;i++) {
+    idClub = randomClubId()
+    club = clubes.find( (item) => item.id == idClub);
+    ThreeClubs.push(club)
   }
+ res.status(200).json({
+  clubes: ThreeClubs
+ })
 }
 
 export const clubesControl = {
-  getAllClubs,
-  getRandomClub
+  getRandomClub,
+
 };
