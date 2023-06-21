@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escudo</title>
+    <link rel="stylesheet" href="styles/styleEscudo.css">
+</head>
+<body>
+
+    <section class="card">
+        <figure class="card-image-container">
+            <img src="<%= club.imageUrl %>" alt="Escudo de <%= club.name %>" height="200px" >
+        </figure>
+        <div class="card-buttons-container">
+            <button id="btn_1"><%= club.name %></button>
+            <button id="btn_2">River</button>
+            <button id="btn_3">Talleres</button>
+        </div>
+    </section>
+    <script src="scripts/scriptEscudo.js"></script>
+
+</body>
+</html>

@@ -8,18 +8,22 @@ return idClub
 }
 
 
-const getAllClubs = async (req, res) => {
-  try {
-    res.status(200).json({
-      status: "succes",
-      clubes,
-    });
-  } catch (error) {
-    res.status(500).json({
-      status: "error",
-      message: error,
-    });
-  }
+// const getAllClubs = async (req, res) => {
+//   try {
+//     res.status(200).json({
+//       status: "succes",
+//       clubes,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       status: "error",
+//       message: error,
+//     });
+//   }
+// };
+
+const getAllClubs =  (req, res) => {
+  res.render('pages/index',{clubes: clubes})
 };
 
 const getRandomClub = (req,res)=> {
@@ -27,10 +31,7 @@ const getRandomClub = (req,res)=> {
   const club = clubes.find( (item) => item.id == idClub  )
 
   try {
-    res.status(200).json({
-      status: "succes",
-      club
-    });
+    res.render('pages/escudo',{club})
   } catch (error) {
     res.status(500).json({
       status: "error",

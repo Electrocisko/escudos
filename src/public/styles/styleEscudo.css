@@ -1,0 +1,47 @@
+body {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    text-align: center;
+    border: solid 1px black;
+    box-shadow: 10px 5px 5px gray;
+    border-radius: 10px;
+    width: 350px;
+    height: 470px;
+}
+
+.card-image-container {
+    border: solid 1px grey;
+    border-radius: 10px;
+    margin: 40px;
+    padding: 10px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 0;
+    vertical-align: middle;
+    padding: 0.8em 1.2em;
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+button:hover{
+background-color: rgb(0, 110, 255);
+   border: solid 1px rgb(64, 63, 63) ;
+}
+
+.card-buttons-container {
+ 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
