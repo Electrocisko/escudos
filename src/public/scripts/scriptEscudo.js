@@ -41,7 +41,7 @@ const checkClub = (e) => {
       },
     }).showToast();
   }
-  if (counter < 3) {
+  if (counter < 10) {
     listClubes();
   } else {
     
@@ -68,11 +68,7 @@ btn3.addEventListener('click', (e) => {
   checkClub(e)
 })
 
-const removeListener = () => {
-  buttons.removeEventListener("click", () => {
-    console.log("first");
-  });
-};
+
 
 const listClubes = async () => {
   const response = await fetch("/api/club");
