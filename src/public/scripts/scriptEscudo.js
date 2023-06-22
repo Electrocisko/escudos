@@ -2,7 +2,7 @@ const btn1 = document.getElementById("btn_1");
 const btn2 = document.getElementById("btn_2");
 const btn3 = document.getElementById("btn_3");
 const imagelogo = document.getElementById("image-logo");
-const buttons = document.getElementById("buttons");
+const buttons = document.getElementsByTagName('button');
 
 let randomClub;
 let counter = 0;
@@ -58,9 +58,15 @@ const checkClub = (e) => {
   }
 };
 
-buttons.addEventListener("click", (e) => {
-  checkClub(e);
+btn1.addEventListener('click', (e) => {
+  checkClub(e)
 });
+btn2.addEventListener('click', (e) => {
+  checkClub(e)
+})
+btn3.addEventListener('click', (e) => {
+  checkClub(e)
+})
 
 const removeListener = () => {
   buttons.removeEventListener("click", () => {
