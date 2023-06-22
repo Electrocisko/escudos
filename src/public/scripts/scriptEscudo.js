@@ -15,12 +15,18 @@ const randomIndexClub = () => {
   return index;
 };
 
-const indexClub = randomIndexClub();
+// const indexClub = randomIndexClub();
 
 const checkClub = (e) => {
   counter++;
   if (e.target.innerText == randomClub.name) {
-    alert("Muy Bien !!");
+    Toastify({
+        text: "Correcto!!",
+        offset: {
+          x: 600, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+          y: 20 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+      }).showToast();
     points++;
   } else {
     alert("Sigue Participando");
@@ -40,11 +46,12 @@ buttons.addEventListener("click", (e) => {
 const listClubes = async () => {
   const response = await fetch("/api/club");
   const data = await response.json();
-  imagelogo.src = data.clubes[indexClub].imageUrl;
+  const i = randomIndexClub()
+  imagelogo.src = data.clubes[i].imageUrl;
   btn1.innerText = data.clubes[0].name;
   btn2.innerText = data.clubes[1].name;
   btn3.innerText = data.clubes[2].name;
-  randomClub = data.clubes[indexClub];
+  randomClub = data.clubes[i];
 };
 
 listClubes();
