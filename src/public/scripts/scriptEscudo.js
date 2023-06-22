@@ -21,21 +21,40 @@ const checkClub = (e) => {
   counter++;
   if (e.target.innerText == randomClub.name) {
     Toastify({
-        text: "Correcto!!",
-        offset: {
-          x: 600, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-          y: 20 // vertical axis - can be a number or a string indicating unity. eg: '2em'
-        },
-      }).showToast();
+      text: "Correcto!!",
+      offset: {
+        x: 600, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        y: 20, // vertical axis - can be a number or a string indicating unity. eg: '2em'
+      },
+    }).showToast();
     points++;
   } else {
-    alert("Sigue Participando");
+    Toastify({
+      text: "MAL !!!!",
+      offset: {
+        x: 600, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        y: 20, // vertical axis - can be a number or a string indicating unity. eg: '2em'
+      },
+      style: {
+        background: "linear-gradient(to right, #ff6242, #ff4122)",
+        color: "black",
+      },
+    }).showToast();
   }
   if (counter < 3) {
     listClubes();
   } else {
-    alert("Game Over Usted hizo: "+points+" puntos.");
-    window.location.reload();
+    
+    Swal.fire({
+      title: "Game Over",
+      text: `Respondiste ${points} veces bien `,
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Volver a Jugar!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
   }
 };
 
@@ -43,10 +62,16 @@ buttons.addEventListener("click", (e) => {
   checkClub(e);
 });
 
+const removeListener = () => {
+  buttons.removeEventListener("click", () => {
+    console.log("first");
+  });
+};
+
 const listClubes = async () => {
   const response = await fetch("/api/club");
   const data = await response.json();
-  const i = randomIndexClub()
+  const i = randomIndexClub();
   imagelogo.src = data.clubes[i].imageUrl;
   btn1.innerText = data.clubes[0].name;
   btn2.innerText = data.clubes[1].name;
