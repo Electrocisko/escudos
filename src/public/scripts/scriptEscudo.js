@@ -5,6 +5,8 @@ const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementById("buttons");
 
 let randomClub;
+let counter = 0;
+let points = 0;
 
 const randomIndexClub = () => {
   const max = 2;
@@ -16,22 +18,24 @@ const randomIndexClub = () => {
 const indexClub = randomIndexClub();
 
 const checkClub = (e) => {
+  counter++;
   if (e.target.innerText == randomClub.name) {
     alert("Muy Bien !!");
-    listClubes();
+    points++;
   } else {
     alert("Sigue Participando");
+  }
+  if (counter < 3) {
     listClubes();
+  } else {
+    alert("Game Over Usted hizo: "+points+" puntos.");
+    window.location.reload();
   }
 };
 
-buttons.addEventListener(
-  "click",
-  (e) => {
-    checkClub(e);
-  },
-  { once: false }
-);
+buttons.addEventListener("click", (e) => {
+  checkClub(e);
+});
 
 const listClubes = async () => {
   const response = await fetch("/api/club");
