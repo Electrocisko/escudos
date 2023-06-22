@@ -7,19 +7,21 @@ const buttons = document.getElementById("buttons");
 let randomClub;
 
 const randomIndexClub = () => {
-    const max = 2;
-    const min = 0;
-    const index = Math.floor(Math.random() * (max - min + 1) + min);
-    return index;
-  };
+  const max = 2;
+  const min = 0;
+  const index = Math.floor(Math.random() * (max - min + 1) + min);
+  return index;
+};
 
-  const indexClub = randomIndexClub();
+const indexClub = randomIndexClub();
 
 const checkClub = (e) => {
-    if (e.target.innerText == randomClub.name )
-  console.log("coinciden ", e.target.innerText);
-  else {
-    console.log("no coinciden", e.target.innerText)
+  if (e.target.innerText == randomClub.name) {
+    alert("Muy Bien !!");
+    listClubes();
+  } else {
+    alert("Sigue Participando");
+    listClubes();
   }
 };
 
@@ -28,7 +30,7 @@ buttons.addEventListener(
   (e) => {
     checkClub(e);
   },
-  { once: true }
+  { once: false }
 );
 
 const listClubes = async () => {
@@ -38,7 +40,7 @@ const listClubes = async () => {
   btn1.innerText = data.clubes[0].name;
   btn2.innerText = data.clubes[1].name;
   btn3.innerText = data.clubes[2].name;
-  randomClub = data.clubes[indexClub]
+  randomClub = data.clubes[indexClub];
 };
 
 listClubes();
