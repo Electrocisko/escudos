@@ -22,7 +22,7 @@ const getRandomClub = (req, res) => {
   } while (ThreeClubs.length < 3);
 
   res.status(200).json({
-    clubes: ThreeClubs,
+    ThreeClubs
   });
 };
 

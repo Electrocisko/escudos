@@ -5,13 +5,45 @@ const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementsByTagName("button");
 const logo = document.getElementById("logo");
 
+btn1.classList.add("hidden");
+btn2.classList.add("hidden");
+btn3.classList.add("hidden");
+
 let randomClub;
 let counter = 0;
 let points = 0;
+let duplicity = [];
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
   return index;
+};
+
+const getClubList = async () => {
+  let flag = true;
+  do {
+    if (duplicity.length == 0) {
+      const response = await fetch("/api/club");
+      const data = await response.json();
+      let idClub = data.ThreeClubs[0].id;
+      duplicity.push(idClub);
+      flag = false;
+      return data.ThreeClubs;
+    } else {
+      const response = await fetch("/api/club");
+      const data = await response.json();
+      let idClub = data.ThreeClubs[0].id;
+      let exist = duplicity.includes(idClub); // Para ver si ya esta dentro de los clubes que fueron mostrando antes
+      if (exist) {
+        console.log("existe");
+      } else {
+        console.log("No existe");
+        duplicity.push(idClub);
+        flag = false;
+        return data.ThreeClubs;
+      }
+    }
+  } while (flag);
 };
 
 const checkClub = (e) => {
@@ -39,7 +71,7 @@ const checkClub = (e) => {
     }).showToast();
   }
   if (counter < 10) {
-    listClubes();
+    renderClubs();
   } else {
     Swal.fire({
       title: "Game Over",
@@ -54,6 +86,7 @@ const checkClub = (e) => {
   }
 };
 
+//event listeners a los botones
 btn1.addEventListener("click", (e) => {
   checkClub(e);
 });
@@ -64,21 +97,21 @@ btn3.addEventListener("click", (e) => {
   checkClub(e);
 });
 
+// eventlistener al logo para arrancar el jueg0
 logo.addEventListener(
   "click",
   () => {
-    listClubes();
+    renderClubs();
   },
   { once: true }
 );
 
-const listClubes = async () => {
-  const response = await fetch("/api/club");
-  const data = await response.json();
-  imagelogo.src = data.clubes[0].imageUrl;
-  randomClub = data.clubes[0];
+const renderClubs = async () => {
+  const clubes = await getClubList();
+  imagelogo.src = clubes[0].imageUrl;
+  randomClub = clubes[0];
   let shufleList = [];
-  let originalList = data.clubes;
+  let originalList = clubes;
   let max = 2;
   let min = 0;
   let i;
@@ -92,4 +125,7 @@ const listClubes = async () => {
   btn1.innerText = shufleList[0].name;
   btn2.innerText = shufleList[1].name;
   btn3.innerText = shufleList[2].name;
+  btn1.classList.remove("hidden");
+  btn2.classList.remove("hidden");
+  btn3.classList.remove("hidden");
 };
