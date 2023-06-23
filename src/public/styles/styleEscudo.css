@@ -19,6 +19,7 @@ body {
     border-radius: 10px;
     margin: 40px;
     padding: 10px;
+    cursor: pointer;
 }
 
 button {
@@ -45,3 +46,4 @@ background-color: rgb(0, 110, 255);
     flex-direction: column;
     gap: 10px;
 }
+

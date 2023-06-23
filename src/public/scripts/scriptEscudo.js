@@ -3,6 +3,7 @@ const btn2 = document.getElementById("btn_2");
 const btn3 = document.getElementById("btn_3");
 const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementsByTagName('button');
+const logo = document.getElementById('logo')
 
 let randomClub;
 let counter = 0;
@@ -15,16 +16,14 @@ const randomIndexClub = () => {
   return index;
 };
 
-// const indexClub = randomIndexClub();
-
 const checkClub = (e) => {
   counter++;
   if (e.target.innerText == randomClub.name) {
     Toastify({
       text: "Correcto!!",
       offset: {
-        x: 600, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-        y: 20, // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        x: 300, 
+        y: 20, 
       },
     }).showToast();
     points++;
@@ -32,8 +31,8 @@ const checkClub = (e) => {
     Toastify({
       text: "MAL !!!!",
       offset: {
-        x: 600, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-        y: 20, // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        x: 300, 
+        y: 20, 
       },
       style: {
         background: "linear-gradient(to right, #ff6242, #ff4122)",
@@ -68,6 +67,9 @@ btn3.addEventListener('click', (e) => {
   checkClub(e)
 })
 
+logo.addEventListener('click', () => {
+  listClubes();
+}, {once: true})
 
 
 const listClubes = async () => {
@@ -81,4 +83,4 @@ const listClubes = async () => {
   randomClub = data.clubes[i];
 };
 
-listClubes();
+
