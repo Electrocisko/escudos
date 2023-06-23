@@ -9,9 +9,7 @@ let randomClub;
 let counter = 0;
 let points = 0;
 
-const randomIndexClub = () => {
-  const max = 2;
-  const min = 0;
+const randomIndexClub = (max,min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
   return index;
 };
@@ -75,12 +73,31 @@ logo.addEventListener('click', () => {
 const listClubes = async () => {
   const response = await fetch("/api/club");
   const data = await response.json();
-  const i = randomIndexClub();
-  imagelogo.src = data.clubes[i].imageUrl;
-  btn1.innerText = data.clubes[0].name;
-  btn2.innerText = data.clubes[1].name;
-  btn3.innerText = data.clubes[2].name;
-  randomClub = data.clubes[i];
+  imagelogo.src = data.clubes[0].imageUrl;
+  randomClub = data.clubes[0];
+  let shufleList=[];
+  let originalList = data.clubes;
+  let max = 2;
+  let min = 0;
+  let i;
+  
+
+  do {
+   i =  randomIndexClub(max,min);
+   let sliced = originalList.splice(i,1);
+   shufleList.push(sliced);
+    max = max-1
+  } while (originalList.length > 0);
+
+  console.log('shufleList', shufleList[0][0].name)
+  console.log('shufleList', shufleList[1][0])
+  console.log('shufleList', shufleList[2])
+
+  btn1.innerText = shufleList[0][0].name;
+  btn2.innerText = shufleList[1][0].name;
+  btn3.innerText = shufleList[2][0].name;
+
+ 
 };
 
 
