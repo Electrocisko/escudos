@@ -122,10 +122,10 @@ const clubes =[
     },
     {
      "id": 18,
-     "name": "Estudiantes ",
+     "name": "Estudiantes",
      "country": "argentina",
      "division": "primera",
-     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/estudic.png"
+     "imageUrl": "https://www.escudosfc.com.br/images/estudic.png"
     },
     {
      "id": 19,

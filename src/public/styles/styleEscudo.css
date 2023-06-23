@@ -1,5 +1,12 @@
 body {
     height: 100dvh;
+    
+    background-color: #232323
+
+    
+}
+
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,6 +19,7 @@ body {
     border-radius: 10px;
     width: 350px;
     height: 470px;
+    background-color: #b0f2b4
 }
 
 .card-image-container {
@@ -23,7 +31,7 @@ body {
 }
 
 button {
-    background-color: blue;
+    background-color: #007200;
     color: white;
     font-weight: bold;
     border-radius: 10px;
@@ -36,7 +44,7 @@ button {
 }
 
 button:hover{
-background-color: rgb(0, 110, 255);
+background-color: #004b23;
    border: solid 1px rgb(64, 63, 63) ;
 }
 
@@ -49,4 +57,12 @@ background-color: rgb(0, 110, 255);
 
 .hidden {
     display: none;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Wallpoet', cursive;
+    
+    color: whitesmoke
+
 }
