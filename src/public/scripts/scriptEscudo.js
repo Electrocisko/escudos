@@ -13,6 +13,7 @@ let randomClub;
 let counter = 0;
 let points = 0;
 let duplicity = [];
+let time;
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -69,9 +70,10 @@ const checkClub = (e) => {
   if (counter < 10) {
     renderClubs();
   } else {
+    const elapsed =  (Date.now() - time)/1000;
     Swal.fire({
       title: "Game Over",
-      text: `Respondiste ${points} veces bien `,
+      text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Volver a Jugar!",
     }).then((result) => {
@@ -97,6 +99,7 @@ btn3.addEventListener("click", (e) => {
 logo.addEventListener(
   "click",
   () => {
+    time=Date.now();
     renderClubs();
   },
   { once: true }
