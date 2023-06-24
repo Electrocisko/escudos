@@ -1,7 +1,7 @@
 import clubes from "../database/clubes.js";
 
 const randomClubId = () => {
-  const max = 28;
+  const max = clubes.length;
   const min = 1;
   const idClub = Math.floor(Math.random() * (max - min + 1) + min);
   return idClub;

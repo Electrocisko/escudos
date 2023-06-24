@@ -50,23 +50,19 @@ const checkClub = (e) => {
   counter++;
   if (e.target.innerText == randomClub.name) {
     Toastify({
-      text: "Correcto!!",
-      offset: {
-        x: 300,
-        y: 20,
-      },
+      text: "Correcto!",
+      style: {
+        width: "70px"
+      }
     }).showToast();
     points++;
   } else {
     Toastify({
-      text: "MAL !!!!",
-      offset: {
-        x: 300,
-        y: 20,
-      },
+      text: "Equivocado",
       style: {
         background: "linear-gradient(to right, #ff6242, #ff4122)",
         color: "black",
+        width: "70px"
       },
     }).showToast();
   }
