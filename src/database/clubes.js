@@ -1,6 +1,6 @@
 
 
-const clubes =[
+const clubes1 =[
     {
      "id": 1,
      "name": "Boca",
@@ -199,4 +199,381 @@ const clubes =[
     }
    ]
 
-export default clubes;
+   const clubes2 = [
+    {
+     "id": 29,
+     "name": "Agropecuario Argentino",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/agropecuario_arg.png"
+    },
+    {
+     "id": 30,
+     "name": "All Boys",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/allboys_arg.png"
+    },
+    {
+     "id": 31,
+     "name": "Almagro",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/almagro.png"
+    },
+    {
+     "id": 32,
+     "name": "Almirate Brown",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/almirantebrown_arg.png"
+    },
+    {
+     "id": 33,
+     "name": "Alvarado",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/alvarado_arg.png"
+    },
+    {
+     "id": 34,
+     "name": "Defensores de Belgrano",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/defensores_arg.png"
+    },
+    {
+     "id": 35,
+     "name": "Defensores Unidos",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/defensores_unidos_arg.png"
+    },
+    {
+     "id": 36,
+     "name": "Deportivo Moron",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/deportivomoron_arg.png"
+    },
+    {
+     "id": 37,
+     "name": "Estudiantes",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/estudiantes_riocuarto.png"
+    },
+    {
+     "id": 38,
+     "name": "Flandria",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/flandria_arg.jpg"
+    },
+    {
+     "id": 39,
+     "name": "Gimnasia y Esgrima",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/gimnasia_mendoza.png"
+    },
+    {
+     "id": 40,
+     "name": "Guemes",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/guemes_arg.jpg"
+    },
+    {
+     "id": 41,
+     "name": "Guillermo Brown",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/guill_brown_arg.png"
+    },
+    {
+     "id": 42,
+     "name": "Nueva Chicago",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/nueva_chicago.png"
+    },
+    {
+     "id": 43,
+     "name": "Patronato",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/patronato_arg.png"
+    },
+    {
+     "id": 44,
+     "name": "San Martin",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/sanmartinsj.png"
+    },
+    {
+     "id": 45,
+     "name": "San Telmo",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/santelmo_arg.png"
+    },
+    {
+     "id": 46,
+     "name": "Temperley",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/temperley.png"
+    },
+    {
+     "id": 47,
+     "name": "Aldosivi",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/aldosivi_arg.png"
+    },
+    {
+     "id": 48,
+     "name": "Atlanta",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/atlanta_arg.png"
+    },
+    {
+     "id": 49,
+     "name": "Atletico Rafaela",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/atrafaela.png"
+    },
+    {
+     "id": 50,
+     "name": "Brown Adrogue",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/brown_adrogue_arg.png"
+    },
+    {
+     "id": 51,
+     "name": "Chacarita",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/chacarita.png"
+    },
+    {
+     "id": 52,
+     "name": "Chaco for Ever",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/chacoforever_arg.png"
+    },
+    {
+     "id": 53,
+     "name": "Deportivo Madryn",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/deportivo_madryn_arg.png"
+    },
+    {
+     "id": 54,
+     "name": "Deportivo Maipu",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/deportivo_maipu.png"
+    },
+    {
+     "id": 55,
+     "name": "Deportivo Riestra",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/deportivo_riestra_arg.png"
+    },
+    {
+     "id": 56,
+     "name": "Estudiantes",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/estudiantes_ba.png"
+    },
+    {
+     "id": 57,
+     "name": "Ferro",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/ferroc.png"
+    },
+    {
+     "id": 58,
+     "name": "Gimnasia y Esgrima",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/gjujuyc.png"
+    },
+    {
+     "id": 59,
+     "name": "Independiente Rivadavia",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/indepe_rivadavia.png"
+    },
+    {
+     "id": 60,
+     "name": "Mitre",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/mitre_sant_est_arg.png"
+    },
+    {
+     "id": 61,
+     "name": "Quilmes",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/quilmes.png"
+    },
+    {
+     "id": 62,
+     "name": "Racing",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/raccordoba_arg.png"
+    },
+    {
+     "id": 63,
+     "name": "Tristan Suarez",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/tristan_suarez.jpg"
+    },
+    {
+     "id": 64,
+     "name": "Villa Dalmine",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/villa_dalmine_arg.jpg"
+    },
+    {
+     "id": 65,
+     "name": "Acassuso",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/acassuso_arg.png"
+    },
+    {
+     "id": 66,
+     "name": "Argentino",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/argentino_merlo_arg.png"
+    },
+    {
+     "id": 67,
+     "name": "Argentino de Quilmes",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/argentino_quilmes_arg.png"
+    },
+    {
+     "id": 68,
+     "name": "Cañuelas",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/canuelas_arg.png"
+    },
+    {
+     "id": 69,
+     "name": "Colegiales",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/colegiales_arg.gif"
+    },
+    {
+     "id": 70,
+     "name": "Comunicaciones",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/comunicaciones_arg.png"
+    },
+    {
+     "id": 71,
+     "name": "Deportivo Armenio",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/dep_armenio.png"
+    },
+    {
+     "id": 72,
+     "name": "Deportivo Merlo",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/deportes_merlo.png"
+    },
+    {
+     "id": 73,
+     "name": "Dock Sud",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/dock_sud.png"
+    },
+    {
+     "id": 74,
+     "name": "Fenix",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/fenix_arg.jpg"
+    },
+    {
+     "id": 75,
+     "name": "Ituzaingo",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/ituzaingo_arg.png"
+    },
+    {
+     "id": 76,
+     "name": "Los Andes",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/losandes.png"
+    },
+    {
+     "id": 77,
+     "name": "Sacachispas",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/sacachispas_arg.jpg"
+    },
+    {
+     "id": 78,
+     "name": "San Miguel",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/san_miguel_arg.png"
+    },
+    {
+     "id": 79,
+     "name": "Talleres",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/talleresba_arg.gif"
+    },
+    {
+     "id": 80,
+     "name": "UAI Urquiza",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/uai_urquiza_arg.png"
+    },
+    {
+     "id": 81,
+     "name": "Villa San Carlos",
+     "country": "argentina",
+     "division": "b",
+     "imageUrl": "https:\/\/www.escudosfc.com.br\/images\/villa_san_carlos_arg.png"
+    }
+   ]
+
+export {
+    clubes1,
+    clubes2
+} 

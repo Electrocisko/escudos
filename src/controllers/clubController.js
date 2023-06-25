@@ -1,4 +1,8 @@
-import clubes from "../database/clubes.js";
+import {clubes1, clubes2} from "../database/clubes.js";
+
+
+const clubes = clubes1.concat(clubes2);
+
 
 const randomClubId = () => {
   const max = clubes.length;
