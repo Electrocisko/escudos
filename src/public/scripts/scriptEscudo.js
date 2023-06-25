@@ -4,6 +4,9 @@ const btn3 = document.getElementById("btn_3");
 const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementsByTagName("button");
 const logo = document.getElementById("logo");
+const level1=document.getElementById("level1");
+const level2=document.getElementById("level2");
+const level3=document.getElementById("level3");
 
 btn1.classList.add("hidden");
 btn2.classList.add("hidden");
@@ -99,6 +102,8 @@ btn3.addEventListener("click", (e) => {
 logo.addEventListener(
   "click",
   () => {
+    console.log('levels', level1.checked,level2.checked,level3.checked
+    )
     time=Date.now();
     renderClubs();
   },
