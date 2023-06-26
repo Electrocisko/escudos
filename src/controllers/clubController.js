@@ -1,7 +1,7 @@
 import {clubes1, clubes2} from "../database/clubes.js";
 
+let clubes;
 
-const clubes = clubes1.concat(clubes2);
 
 
 const randomClubId = () => {
@@ -12,10 +12,25 @@ const randomClubId = () => {
 };
 
 const getRandomClub = (req, res) => {
+  const level = req.params.level
   const ThreeClubs = [];
   let club;
   let idClub;
   let duplicate;
+
+  if (level == 1) {
+    clubes = clubes1
+  }
+  if(level == 2) {
+    clubes = clubes1.concat(clubes2)
+  }  
+  if(level == 3) {
+    clubes = clubes1.concat(clubes2)
+  } 
+ 
+
+
+
   do {
     idClub = randomClubId();
     duplicate = ThreeClubs.findIndex((item) => item.id == idClub);
