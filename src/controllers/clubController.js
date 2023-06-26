@@ -1,8 +1,4 @@
-import {clubes1, clubes2} from "../database/clubes.js";
-
-let clubes;
-
-
+import { clubes1, clubes2, clubes3 } from "../database/clubes.js";
 
 const randomClubId = () => {
   const max = clubes.length;
@@ -11,25 +7,23 @@ const randomClubId = () => {
   return idClub;
 };
 
+let clubes;
 const getRandomClub = (req, res) => {
-  const level = req.params.level
+  const level = req.params.level;
   const ThreeClubs = [];
   let club;
   let idClub;
   let duplicate;
 
   if (level == 1) {
-    clubes = clubes1
+    clubes = clubes1;
   }
-  if(level == 2) {
-    clubes = clubes1.concat(clubes2)
-  }  
-  if(level == 3) {
-    clubes = clubes1.concat(clubes2)
-  } 
- 
-
-
+  if (level == 2) {
+    clubes = clubes1.concat(clubes2);
+  }
+  if (level == 3) {
+    clubes = clubes1.concat(clubes2).concat(clubes3);
+  }
 
   do {
     idClub = randomClubId();
@@ -41,7 +35,7 @@ const getRandomClub = (req, res) => {
   } while (ThreeClubs.length < 3);
 
   res.status(200).json({
-    ThreeClubs
+    ThreeClubs,
   });
 };
 
