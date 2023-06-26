@@ -1,9 +1,8 @@
+
+
 body {
     height: 100dvh;
-    
     background-color: #232323
-
-    
 }
 
 .container {
@@ -62,7 +61,15 @@ background-color: #004b23;
 h1 {
     text-align: center;
     font-family: 'Wallpoet', cursive;
-    
     color: whitesmoke
+}
 
+.level-select {
+    text-align: center;
+    color: whitesmoke;
+    font-family: 'Comfortaa', cursive;
+}
+
+.level {
+    color: #007200;
 }

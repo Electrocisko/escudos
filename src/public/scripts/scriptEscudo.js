@@ -4,6 +4,7 @@ const btn3 = document.getElementById("btn_3");
 const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementsByTagName("button");
 const logo = document.getElementById("logo");
+const levels = document.getElementsByName("level");
 
 btn1.classList.add("hidden");
 btn2.classList.add("hidden");
@@ -14,6 +15,7 @@ let counter = 0;
 let points = 0;
 let duplicity = [];
 let time;
+let level = 0;
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -22,23 +24,26 @@ const randomIndexClub = (max, min) => {
 
 const getClubList = async () => {
   let flag = true;
+  //Cheque el nivel de dificultad antes de hacer el fetch al api
+  if (levels[0].checked) level = 1;
+  if (levels[1].checked) level = 2;
+  if (levels[2].checked) level = 3;
   do {
     if (duplicity.length == 0) {
-      const response = await fetch("/api/club");
+      const response = await fetch(`/api/club/${level}`);
       const data = await response.json();
       let idClub = data.ThreeClubs[0].id;
       duplicity.push(idClub);
       flag = false;
       return data.ThreeClubs;
     } else {
-      const response = await fetch("/api/club");
+      const response = await fetch(`/api/club/${level}`);
       const data = await response.json();
       let idClub = data.ThreeClubs[0].id;
       let exist = duplicity.includes(idClub); // Para ver si ya esta dentro de los clubes que fueron mostrando antes
       if (exist) {
-        console.log("existe");
+        console.log("salio antes");
       } else {
-        console.log("No existe");
         duplicity.push(idClub);
         flag = false;
         return data.ThreeClubs;
@@ -53,8 +58,8 @@ const checkClub = (e) => {
     Toastify({
       text: "Correcto!",
       style: {
-        width: "70px"
-      }
+        width: "70px",
+      },
     }).showToast();
     points++;
   } else {
@@ -63,14 +68,14 @@ const checkClub = (e) => {
       style: {
         background: "linear-gradient(to right, #ff6242, #ff4122)",
         color: "black",
-        width: "70px"
+        width: "70px",
       },
     }).showToast();
   }
   if (counter < 10) {
     renderClubs();
   } else {
-    const elapsed =  (Date.now() - time)/1000;
+    const elapsed = (Date.now() - time) / 1000;
     Swal.fire({
       title: "Game Over",
       text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
@@ -99,7 +104,7 @@ btn3.addEventListener("click", (e) => {
 logo.addEventListener(
   "click",
   () => {
-    time=Date.now();
+    time = Date.now();
     renderClubs();
   },
   { once: true }
