@@ -8,6 +8,7 @@ const randomClubId = () => {
 };
 
 let clubes;
+
 const getRandomClub = (req, res) => {
   const level = req.params.level;
   const ThreeClubs = [];
@@ -27,11 +28,11 @@ const getRandomClub = (req, res) => {
 
   do {
     idClub = randomClubId();
-    duplicate = ThreeClubs.findIndex((item) => item.id == idClub);
+     duplicate = ThreeClubs.findIndex((item) => item.id == idClub);
     if (duplicate == -1) {
       club = clubes.find((item) => item.id == idClub);
       ThreeClubs.push(club);
-    }
+    } 
   } while (ThreeClubs.length < 3);
 
   res.status(200).json({

@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const playerSchema = new Schema({
-    nickName: {
+    nick: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     points: {
         type: Number
