@@ -4,6 +4,8 @@ import dotenvConfig from './configs/dotenvConfig.js';
 import clubesRouter from './routes/clubesRouter.js';
 import __dirname from './helpers/utils.js';
 import IndexRouter from './routes/viewsRouter.js';
+import connection from './database/connection.js';
+import playersRouter from './routes/playersRouter.js'
 
 const PORT = dotenvConfig.app.PORT;
 const app = express();
@@ -18,8 +20,13 @@ app.set('views',__dirname+'/views');
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
+//Connect Database
+connection();
+
+
 //routes
 app.use('/api', clubesRouter);
+app.use('/api/players',playersRouter);
 app.use('/',IndexRouter);
 
 app.listen(PORT, () => {
