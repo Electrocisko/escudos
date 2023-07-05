@@ -5,7 +5,9 @@ import clubesRouter from './routes/clubesRouter.js';
 import __dirname from './helpers/utils.js';
 import IndexRouter from './routes/viewsRouter.js';
 import connection from './database/connection.js';
-import playersRouter from './routes/playersRouter.js'
+import playersRouter from './routes/playersRouter.js';
+import session from 'express-session';
+import LoginRouter from './routes/viewsRouter.js'
 
 const PORT = dotenvConfig.app.PORT;
 const app = express();
@@ -14,6 +16,11 @@ const app = express();
 app.use(cors()); 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: dotenvConfig.session.SECRET_SESSION,
+    resave: true,
+    saveUninitialized: true
+}))
 
 // Template config engine
 app.set('views',__dirname+'/views');
@@ -28,6 +35,7 @@ connection();
 app.use('/api', clubesRouter);
 app.use('/api/players',playersRouter);
 app.use('/',IndexRouter);
+app.use('/login',LoginRouter);
 
 app.listen(PORT, () => {
     console.log(`Servidor levantado en http://localhost:${PORT}`)

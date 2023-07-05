@@ -1,7 +1,9 @@
 import { Router } from "express";
 const router = Router();
-import {indexController  } from "../controllers/viewsController.js";
+import {indexController, loginController  } from "../controllers/viewsController.js";
 
 router.get('/', indexController);
+
+router.get('/login', loginController);
 
 export default router;
