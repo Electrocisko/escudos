@@ -8,7 +8,8 @@ const playerSchema = new Schema({
         unique: true,
     },
     points: {
-        type: Number
+        type: Number,
+        default:0
     },
     password: {
         type: String,

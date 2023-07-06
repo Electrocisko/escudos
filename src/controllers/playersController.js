@@ -1,6 +1,8 @@
 import { Player } from "../models/playerModel.js";
 import { createHash, isValidPassword } from "../helpers/cryptPassword.js";
 import { isValidObjectId } from "mongoose";
+import session from "express-session";
+
 
 const getPlayers = async (req, res) => {
   try {
@@ -116,10 +118,35 @@ const putPlayer = async (req, res) => {
     }
 };
 
+
+const loginPLayer = async (req,res) => {
+  try {
+    const {nick, password} = req.body;
+    if (!nick || !password) return res
+    .status(400)
+    .json({ status: "error", message: "incomplete data" });
+    const player = await Player.findOne({nick:nick}).lean();
+    if (!player) return res.status(404).json({status:"error", message: "¨Player not exist"});
+    const validPass = await isValidPassword(player, password);
+    if(!validPass) return res.status(400).json({status:"error", message: "Incorrect Password"});
+
+
+
+   res.status(200).json({status:"success"})
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "error",
+      message: "Error can not login player",
+    });
+  }
+}
+
 export const playersControllers = {
   getPlayers,
   getPlayerById,
   getPlayerByNick,
   postPlayer,
   putPlayer,
+  loginPLayer
 };

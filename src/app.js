@@ -3,11 +3,11 @@ import cors from 'cors';
 import dotenvConfig from './configs/dotenvConfig.js';
 import clubesRouter from './routes/clubesRouter.js';
 import __dirname from './helpers/utils.js';
-import IndexRouter from './routes/viewsRouter.js';
+import viewsRouter from './routes/viewsRouter.js';
 import connection from './database/connection.js';
 import playersRouter from './routes/playersRouter.js';
 import session from 'express-session';
-import LoginRouter from './routes/viewsRouter.js'
+
 
 const PORT = dotenvConfig.app.PORT;
 const app = express();
@@ -34,8 +34,8 @@ connection();
 //routes
 app.use('/api', clubesRouter);
 app.use('/api/players',playersRouter);
-app.use('/',IndexRouter);
-app.use('/login',LoginRouter);
+app.use('/',viewsRouter);
+
 
 app.listen(PORT, () => {
     console.log(`Servidor levantado en http://localhost:${PORT}`)
