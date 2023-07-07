@@ -123,6 +123,7 @@ btn3.addEventListener("click", (e) => {
   checkClub(e);
 });
 
+
 // eventlistener al logo para arrancar el jueg0
 logo.addEventListener(
   "click",
@@ -130,6 +131,7 @@ logo.addEventListener(
     levelsRadio.classList.add('hidden')
     time = Date.now();
     renderClubs();
+    logo.classList.remove('pointer-active')
   },
   { once: true }
 );
