@@ -19,6 +19,18 @@ let duplicity = [];
 let time;
 let level = 0;
 
+const logout = () => {fetch("/api/sessions/logout")
+.then(results => results.json())
+.then(data => {
+  console.log(data);
+  setTimeout(() => {
+    window.location.reload();
+  }, "2000");
+ 
+})
+
+}
+
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
   return index;
@@ -78,34 +90,25 @@ const checkClub = (e) => {
     renderClubs();
   } else {
     const elapsed = (Date.now() - time) / 1000;
-    // Swal.fire({
-    //   title: "Game Over",
-    //   text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
-    //   confirmButtonColor: "#3085d6",
-    //   confirmButtonText: "Volver a Jugar!",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     window.location.reload();
-    //   }
-    // });
     Swal.fire({
-      title: '¿Jugar Otra Vez?',
+      title: "Game Over",
       showDenyButton: true,
-      confirmButtonText: 'Si',
-      denyButtonText: `No`,
+      text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Volver a Jugar!",
+      denyButtonText: `Salir`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         window.location.reload();
-      } else if (result.isDenied) {
-        fetch("/api/sessions/logout")
-        .then(results => results.json())
-        .then(data => {
-          console.log(data);
-          window.location.reload();
+      } else if(result.isDenied) {
+        Swal.fire({
+          title: 'Adios!!',
+          showConfirmButton: false,
+          timer: 1500
         })
+        logout()
       }
-    })
+    });
   }
 };
 
@@ -156,11 +159,6 @@ const renderClubs = async () => {
 };
 
 logoutBtn.addEventListener('click', () => {
-  fetch("/api/sessions/logout")
-  .then(results => results.json())
-  .then(data => {
-    console.log(data);
-    window.location.reload();
-  })
+   logout()
 } )
 
