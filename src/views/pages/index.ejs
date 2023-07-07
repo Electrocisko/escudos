@@ -19,9 +19,9 @@
   </head>
   <body>
     <header>
-      <h1>El Juego de los Escudos</h1>
+      <h1>El Juego de los Escudos! <%= player.nick  %></h1>
     </header>
-    <form class="level-select">
+    <form class="level-select" id="levels-radio">
       <p>
         Selecciona Dificultad:<br />
         <label><input type="radio" name="level" value="easy" checked id="level1"/> Facil</label>
@@ -31,7 +31,7 @@
     </form>
     <section class="container">
       <div class="card">
-        <figure class="card-image-container" id="logo">
+        <figure class="card-image-container pointer-active " id="logo">
           <img
             id="image-logo"
             src="images/logo1.png"
@@ -46,6 +46,7 @@
         </div>
       </div>
     </section>
+
 
     <script src="scripts/scriptEscudo.js"></script>
     <script

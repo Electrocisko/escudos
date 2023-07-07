@@ -5,6 +5,8 @@ const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementsByTagName("button");
 const logo = document.getElementById("logo");
 const levels = document.getElementsByName("level");
+const logoutBtn = document.getElementById('logoutBtn');
+const levelsRadio = document.getElementById('levels-radio');
 
 btn1.classList.add("hidden");
 btn2.classList.add("hidden");
@@ -16,6 +18,18 @@ let points = 0;
 let duplicity = [];
 let time;
 let level = 0;
+
+const logout = () => {fetch("/api/sessions/logout")
+.then(results => results.json())
+.then(data => {
+  console.log(data);
+  setTimeout(() => {
+    window.location.reload();
+  }, "2000");
+ 
+})
+
+}
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -78,12 +92,21 @@ const checkClub = (e) => {
     const elapsed = (Date.now() - time) / 1000;
     Swal.fire({
       title: "Game Over",
+      showDenyButton: true,
       text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Volver a Jugar!",
+      denyButtonText: `Salir`,
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.reload();
+      } else if(result.isDenied) {
+        Swal.fire({
+          title: 'Adios!!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        logout()
       }
     });
   }
@@ -100,12 +123,15 @@ btn3.addEventListener("click", (e) => {
   checkClub(e);
 });
 
+
 // eventlistener al logo para arrancar el jueg0
 logo.addEventListener(
   "click",
   () => {
+    levelsRadio.classList.add('hidden')
     time = Date.now();
     renderClubs();
+    logo.classList.remove('pointer-active')
   },
   { once: true }
 );
@@ -133,3 +159,8 @@ const renderClubs = async () => {
   btn2.classList.remove("hidden");
   btn3.classList.remove("hidden");
 };
+
+logoutBtn.addEventListener('click', () => {
+   logout()
+} )
+

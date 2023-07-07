@@ -2,6 +2,8 @@ import { Player } from "../models/playerModel.js";
 import { createHash, isValidPassword } from "../helpers/cryptPassword.js";
 import { isValidObjectId } from "mongoose";
 
+
+
 const getPlayers = async (req, res) => {
   try {
     const players = await Player.find().select({ password: 0 }).lean();
@@ -55,45 +57,6 @@ const getPlayerByNick = async (req, res) => {
     
 };
 
-const postPlayer = async (req, res) => {
-  try {
-    let player = req.body;
-    const { nick, password, checkPassword } = player;
-    //validate input data
-    if (!nick || !password || !checkPassword)
-      return res
-        .status(400)
-        .json({ status: "error", message: "incomplete data" });
-    if (password != checkPassword)
-      return res
-        .status(400)
-        .json({ status: "error", message: "passwords don't match" });
-    // check if there is another user with the same nick
-    const exist = await Player.findOne({ nick: nick });
-    if (exist)
-      return res
-        .status(400)
-        .json({
-          status: "error",
-          message: "Usuario ya registrado con ese Nick",
-        });
-    const newPLayer = new Player(player);
-    const hashedPassword = await createHash(password);
-    newPLayer.password = hashedPassword;
-    const data = await newPLayer.save();
-    res.status(200).json({
-      status: "success",
-      player: data.nick,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      status: "error",
-      message: "Error can not create player",
-    });
-  }
-};
-
 const putPlayer = async (req, res) => {
     try {
         let id = req.params.id;
@@ -116,10 +79,10 @@ const putPlayer = async (req, res) => {
     }
 };
 
+
 export const playersControllers = {
   getPlayers,
   getPlayerById,
   getPlayerByNick,
-  postPlayer,
-  putPlayer,
+  putPlayer
 };
