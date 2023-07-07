@@ -6,6 +6,7 @@ const buttons = document.getElementsByTagName("button");
 const logo = document.getElementById("logo");
 const levels = document.getElementsByName("level");
 const logoutBtn = document.getElementById('logoutBtn');
+const levelsRadio = document.getElementById('levels-radio');
 
 btn1.classList.add("hidden");
 btn2.classList.add("hidden");
@@ -77,16 +78,34 @@ const checkClub = (e) => {
     renderClubs();
   } else {
     const elapsed = (Date.now() - time) / 1000;
+    // Swal.fire({
+    //   title: "Game Over",
+    //   text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
+    //   confirmButtonColor: "#3085d6",
+    //   confirmButtonText: "Volver a Jugar!",
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     window.location.reload();
+    //   }
+    // });
     Swal.fire({
-      title: "Game Over",
-      text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "Volver a Jugar!",
+      title: '¿Jugar Otra Vez?',
+      showDenyButton: true,
+      confirmButtonText: 'Si',
+      denyButtonText: `No`,
     }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         window.location.reload();
+      } else if (result.isDenied) {
+        fetch("/api/sessions/logout")
+        .then(results => results.json())
+        .then(data => {
+          console.log(data);
+          window.location.reload();
+        })
       }
-    });
+    })
   }
 };
 
@@ -105,6 +124,7 @@ btn3.addEventListener("click", (e) => {
 logo.addEventListener(
   "click",
   () => {
+    levelsRadio.classList.add('hidden')
     time = Date.now();
     renderClubs();
   },

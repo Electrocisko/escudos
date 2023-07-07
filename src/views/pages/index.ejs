@@ -21,7 +21,7 @@
     <header>
       <h1>El Juego de los Escudos! <%= player.nick  %></h1>
     </header>
-    <form class="level-select">
+    <form class="level-select" id="levels-radio">
       <p>
         Selecciona Dificultad:<br />
         <label><input type="radio" name="level" value="easy" checked id="level1"/> Facil</label>
@@ -47,7 +47,6 @@
       </div>
     </section>
     <div>
-      <!-- <a href="/api/sessions/logout">Cerrar Session</a> -->
       <button id="logoutBtn">Close session</button>
     </div>
 
