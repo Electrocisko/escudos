@@ -7,7 +7,7 @@ form.addEventListener('submit',evt=>{
     evt.preventDefault();
     const nick = form.nick.value;
     const password = form.password.value;
-    if(!nick || !password) return alert('Datos incompletos');
+    if(!nick || !password) return Swal.fire('Complete todos los campos');
     const obj = {
         nick,
         password
@@ -20,10 +20,10 @@ form.addEventListener('submit',evt=>{
         }
     }).then(result=>result.json()).then(data=>{
         console.log(data)
-        if (data.status=='error') alert(data.message)
-        
-        location.href = '/'
-        
+        if (data.status=='error') { Swal.fire(data.message);} 
+        else {
+            location.href = '/'
+        }
     });
    
     form.reset();

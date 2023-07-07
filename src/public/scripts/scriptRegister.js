@@ -6,8 +6,8 @@ form.addEventListener('submit',evt=>{
     const nick = form.nick.value;
     const password = form.password.value;
     const checkPassword = form.checkPassword.value;
-    if(!nick || !password || !checkPassword) return alert('Datos incompletos');
-    if (password != checkPassword) return alert('Password no coinciden');
+    if(!nick || !password || !checkPassword) return Swal.fire('Complete todos los campos');
+    if (password != checkPassword) return Swal.fire('No coinciden los passwords');
     const obj = {
         nick,
         password,
@@ -25,7 +25,7 @@ form.addEventListener('submit',evt=>{
         if (json.status == "success") {
             location.href = '/'
         } else {
-            alert(json.message)
+            Swal.fire(json.message);
         }
     });
     
