@@ -5,6 +5,7 @@ const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementsByTagName("button");
 const logo = document.getElementById("logo");
 const levels = document.getElementsByName("level");
+const logoutBtn = document.getElementById('logoutBtn');
 
 btn1.classList.add("hidden");
 btn2.classList.add("hidden");
@@ -133,3 +134,13 @@ const renderClubs = async () => {
   btn2.classList.remove("hidden");
   btn3.classList.remove("hidden");
 };
+
+logoutBtn.addEventListener('click', () => {
+  fetch("/api/sessions/logout")
+  .then(results => results.json())
+  .then(data => {
+    console.log(data);
+    window.location.reload();
+  })
+} )
+

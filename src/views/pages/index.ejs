@@ -19,7 +19,7 @@
   </head>
   <body>
     <header>
-      <h1>El Juego de los Escudos!</h1>
+      <h1>El Juego de los Escudos! <%= player.nick  %></h1>
     </header>
     <form class="level-select">
       <p>
@@ -46,6 +46,10 @@
         </div>
       </div>
     </section>
+    <div>
+      <!-- <a href="/api/sessions/logout">Cerrar Session</a> -->
+      <button id="logoutBtn">Close session</button>
+    </div>
 
     <script src="scripts/scriptEscudo.js"></script>
     <script

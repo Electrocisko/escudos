@@ -2,7 +2,8 @@ import session from "express-session";
 
 
 const indexController = (req, res) => {
-    res.render('pages/index')
+    if(!req.session.player) return res.redirect('/login');
+    res.render('pages/index',{player: req.session.player})
 }
 
 

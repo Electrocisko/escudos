@@ -6,19 +6,28 @@ form.addEventListener('submit',evt=>{
     const nick = form.nick.value;
     const password = form.password.value;
     const checkPassword = form.checkPassword.value;
-    if(!nick || !password || !checkPassword) alert('Datos incompletos');
-    if (password != checkPassword) alert('Password no coinciden');
+    if(!nick || !password || !checkPassword) return alert('Datos incompletos');
+    if (password != checkPassword) return alert('Password no coinciden');
     const obj = {
         nick,
         password,
         checkPassword
     };
-    fetch('api/players',{
+    fetch('api/sessions/register',{
         method:'POST',
         body:JSON.stringify(obj),
         headers:{
             "Content-Type":"application/json"
         }
-    }).then(result=>result.json()).then(json=>console.log(json));
+    }).then(result=>result.json())
+    .then(json=>{
+        console.log(json)
+        if (json.status == "success") {
+            location.href = '/'
+        } else {
+            alert(json.message)
+        }
+    });
+    
     form.reset();
 })

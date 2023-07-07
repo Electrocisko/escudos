@@ -7,6 +7,7 @@ import viewsRouter from './routes/viewsRouter.js';
 import connection from './database/connection.js';
 import playersRouter from './routes/playersRouter.js';
 import session from 'express-session';
+import sessionsRouter from './routes/sessionRouter.js';
 
 
 const PORT = dotenvConfig.app.PORT;
@@ -34,6 +35,7 @@ connection();
 //routes
 app.use('/api', clubesRouter);
 app.use('/api/players',playersRouter);
+app.use('/api/sessions', sessionsRouter);
 app.use('/',viewsRouter);
 
 
