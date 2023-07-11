@@ -7,6 +7,7 @@ const logo = document.getElementById("logo");
 const levels = document.getElementsByName("level");
 const logoutBtn = document.getElementById('logoutBtn');
 const levelsRadio = document.getElementById('levels-radio');
+const playerData = document.getElementById("player-data")
 
 btn1.classList.add("hidden");
 btn2.classList.add("hidden");
@@ -26,10 +27,29 @@ const logout = () => {fetch("/api/sessions/logout")
   setTimeout(() => {
     window.location.reload();
   }, "2000");
- 
 })
-
 }
+
+const savePoints = async (points) => {
+  try {
+    const url = `/api/players/${playerData.dataset.id}`;
+    const response = await fetch(url, {
+      method: "PUT", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({points: points}),
+    });
+    const result = await response.json();
+
+    
+    console.log("Success:", result);
+    console.log(`El jugador con  ${playerData.dataset.id} id hizo ${points} puntos`)
+  } catch (error) { 
+    console.log(error)
+  }
+}
+
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -90,6 +110,15 @@ const checkClub = (e) => {
     renderClubs();
   } else {
     const elapsed = (Date.now() - time) / 1000;
+
+// ACA VA LOGICA DE PUNTOS
+savePoints(points)
+
+
+
+
+
+
     Swal.fire({
       title: "Game Over",
       showDenyButton: true,
@@ -160,7 +189,5 @@ const renderClubs = async () => {
   btn3.classList.remove("hidden");
 };
 
-logoutBtn.addEventListener('click', () => {
-   logout()
-} )
+
 

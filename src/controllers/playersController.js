@@ -1,5 +1,4 @@
 import { Player } from "../models/playerModel.js";
-import { createHash, isValidPassword } from "../helpers/cryptPassword.js";
 import { isValidObjectId } from "mongoose";
 
 

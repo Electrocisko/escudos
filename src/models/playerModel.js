@@ -7,9 +7,13 @@ const playerSchema = new Schema({
         required: true,
         unique: true,
     },
-    points: {
+    recordPoints: {
         type: Number,
         default:0
+    },
+    recordTime: {
+        type: Number,
+        default: 0
     },
     password: {
         type: String,

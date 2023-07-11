@@ -13,5 +13,4 @@ router.get("/bynick/:nick", playersControllers.getPlayerByNick);
 
 router.put("/:id", playersControllers.putPlayer);
 
-
 export default router;

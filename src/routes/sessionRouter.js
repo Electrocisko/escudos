@@ -59,8 +59,7 @@ router.post("/login", async (req, res) => {
         .json({ status: "error", message: "Clave Incorrecta" });
 
     req.session.player = player;
-
-    res.status(200).json({ status: "success" });
+    res.status(200).json({ status: "success", id: player._id });
   } catch (error) {
     console.log(error);
     res.status(500).json({
