@@ -1,4 +1,9 @@
-const form = document.getElementById('register-form')
+const form = document.getElementById('register-form');
+const spinner = document.getElementById('spinner');
+
+
+
+
 
 form.addEventListener('submit',evt=>{
     evt.preventDefault();
@@ -9,6 +14,7 @@ form.addEventListener('submit',evt=>{
         nick,
         password
     };
+    spinner.classList.add('proof')
     fetch('/api/sessions/login',{
         method:'POST',
         body:JSON.stringify(obj),
@@ -18,6 +24,7 @@ form.addEventListener('submit',evt=>{
     }).then(result=>result.json()).then(data=>{
         if (data.status=='error') { Swal.fire(data.message);} 
         else {
+            spinner.classList.remove('proof')
             location.href = '/'
         }
     });
