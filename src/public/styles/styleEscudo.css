@@ -25,9 +25,8 @@ body {
 .card-image-container {
     border: solid 1px grey;
     border-radius: 10px;
-    margin: 40px;
+    margin: 20px 40px;
     padding: 10px;
-    /* cursor: pointer; */
 }
 
 button {

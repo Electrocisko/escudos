@@ -21,11 +21,11 @@
   <body>
     <header>
       <h1 id="player-data" data-id="<%= player._id  %>"> <%= player.nick  %> </h1>
-      <p>Tu record es : <%= player.recordPoints  %> puntos en <%= player.recordTime  %></p>
+      <p>Tu record es : <%= player.recordPoints  %> puntos en <%= player.recordTime  %> segundos</p>
     </header>
     <form class="level-select" id="levels-radio">
       <p>
-        Seleccione Nivel:<br />
+        Seleccione Nivel: 
         <label><input type="radio" name="level" value="easy" checked id="level1"/> Facil</label>
         <label><input type="radio" name="level" value="medium" id="level2" /> Medio</label>
         <label><input type="radio" name="level" value="hard" id="level3"/> Dificil</label>

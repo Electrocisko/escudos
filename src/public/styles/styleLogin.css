@@ -4,8 +4,11 @@ body {
     color: white;
 }
 
-
-
 .proof {
     display: none;
+}
+
+.nav-link{
+    color: white;
+    border-radius: 5px;
 }
