@@ -62,8 +62,12 @@ const putPlayer = async (req, res) => {
         if (!isValidObjectId(id))
         return res.status(400).json({ status: "error", message: "Id no valido" });
         let player = await Player.findById(id).lean();
-        const {points} = req.body;
-        player.points=points;
+
+        console.log(req.body)
+
+        const {recordPoints, recordTime} = req.body;
+        player.recordPoints = recordPoints;
+        player.recordTime = recordTime;
         const data = await Player.findByIdAndUpdate(id,player, {new:true})
         res.json({
             data

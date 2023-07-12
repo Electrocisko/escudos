@@ -5,9 +5,9 @@ const imagelogo = document.getElementById("image-logo");
 const buttons = document.getElementsByTagName("button");
 const logo = document.getElementById("logo");
 const levels = document.getElementsByName("level");
-const logoutBtn = document.getElementById('logoutBtn');
-const levelsRadio = document.getElementById('levels-radio');
-const playerData = document.getElementById("player-data")
+const logoutBtn = document.getElementById("logoutBtn");
+const levelsRadio = document.getElementById("levels-radio");
+const playerData = document.getElementById("player-data");
 
 btn1.classList.add("hidden");
 btn2.classList.add("hidden");
@@ -20,36 +20,54 @@ let duplicity = [];
 let time;
 let level = 0;
 
-const logout = () => {fetch("/api/sessions/logout")
-.then(results => results.json())
-.then(data => {
-  console.log(data);
-  setTimeout(() => {
-    window.location.reload();
-  }, "2000");
-})
-}
-
-const savePoints = async (points) => {
-  try {
-    const url = `/api/players/${playerData.dataset.id}`;
-    const response = await fetch(url, {
-      method: "PUT", 
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({points: points}),
+const logout = () => {
+  fetch("/api/sessions/logout")
+    .then((results) => results.json())
+    .then((data) => {
+      console.log(data);
+      setTimeout(() => {
+        window.location.reload();
+      }, "2000");
     });
-    const result = await response.json();
+};
 
-    
-    console.log("Success:", result);
-    console.log(`El jugador con  ${playerData.dataset.id} id hizo ${points} puntos`)
-  } catch (error) { 
-    console.log(error)
+const saveRecordPlayer = async (points, elapsed) => {
+  console.log("entre a saveRecordPlayer");
+
+  try {
+    const dataPlayer = await fetch(
+      `/api/players/byid/${playerData.dataset.id}`
+    );
+    const responseData = await dataPlayer.json();
+    const { recordPoints, recordTime } = responseData.data;
+    const url = `/api/players/${playerData.dataset.id}`;
+    const record = { recordPoints: points, recordTime: elapsed };
+    if (points >= recordPoints) {
+      const saveData = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(record),
+      });
+      const result = await saveData.json();
+      console.log("Success:", result);
+    }
+    if (points == recordPoints && recordTime > elapsed) {
+      const saveData = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(record),
+      });
+      const result = await saveData.json();
+      console.log(result);
+    }
+  } catch (error) {
+    console.log(error);
   }
-}
-
+};
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -111,13 +129,8 @@ const checkClub = (e) => {
   } else {
     const elapsed = (Date.now() - time) / 1000;
 
-// ACA VA LOGICA DE PUNTOS
-savePoints(points)
-
-
-
-
-
+    // ACA VA LOGICA DE PUNTOS
+    saveRecordPlayer(points, elapsed);
 
     Swal.fire({
       title: "Game Over",
@@ -129,13 +142,13 @@ savePoints(points)
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.reload();
-      } else if(result.isDenied) {
+      } else if (result.isDenied) {
         Swal.fire({
-          title: 'Adios!!',
+          title: "Adios!!",
           showConfirmButton: false,
-          timer: 1500
-        })
-        logout()
+          timer: 1500,
+        });
+        logout();
       }
     });
   }
@@ -152,15 +165,14 @@ btn3.addEventListener("click", (e) => {
   checkClub(e);
 });
 
-
 // eventlistener al logo para arrancar el jueg0
 logo.addEventListener(
   "click",
   () => {
-    levelsRadio.classList.add('hidden')
+    levelsRadio.classList.add("hidden");
     time = Date.now();
     renderClubs();
-    logo.classList.remove('pointer-active')
+    logo.classList.remove("pointer-active");
   },
   { once: true }
 );
@@ -188,6 +200,3 @@ const renderClubs = async () => {
   btn2.classList.remove("hidden");
   btn3.classList.remove("hidden");
 };
-
-
-
