@@ -19,6 +19,8 @@ let points = 0;
 let duplicity = [];
 let time;
 let level = 0;
+let attempts = 10;
+let good = 0;
 
 const logout = () => {
   fetch("/api/sessions/logout")
@@ -32,8 +34,6 @@ const logout = () => {
 };
 
 const saveRecordPlayer = async (points, elapsed) => {
-  console.log("entre a saveRecordPlayer");
-
   try {
     const dataPlayer = await fetch(
       `/api/players/byid/${playerData.dataset.id}`
@@ -51,7 +51,7 @@ const saveRecordPlayer = async (points, elapsed) => {
         body: JSON.stringify(record),
       });
       const result = await saveData.json();
-      console.log("Success:", result);
+      console.log(result);
     }
     if (points == recordPoints && recordTime > elapsed) {
       const saveData = await fetch(url, {
@@ -105,6 +105,7 @@ const getClubList = async () => {
 };
 
 const checkClub = (e) => {
+  let add = level;
   counter++;
   if (e.target.innerText == randomClub.name) {
     Toastify({
@@ -113,7 +114,9 @@ const checkClub = (e) => {
         width: "70px",
       },
     }).showToast();
-    points++;
+    //Here I add the points obtained according to difficulty
+    points = points + add;
+    good++;
   } else {
     Toastify({
       text: "Equivocado",
@@ -124,18 +127,18 @@ const checkClub = (e) => {
       },
     }).showToast();
   }
-  if (counter < 10) {
+  // compare max attempts
+  if (counter < attempts) {
     renderClubs();
   } else {
     const elapsed = (Date.now() - time) / 1000;
-
-    // ACA VA LOGICA DE PUNTOS
+    //Save record points
     saveRecordPlayer(points, elapsed);
-
+    //SweetAlert
     Swal.fire({
       title: "Game Over",
       showDenyButton: true,
-      text: `Respondiste ${points} veces bien  en ${elapsed} segundos`,
+      text: `${good} Correctos  en ${elapsed}'', ${points} Pts`,
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Volver a Jugar!",
       denyButtonText: `Salir`,

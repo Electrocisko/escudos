@@ -2,7 +2,6 @@ import { Player } from "../models/playerModel.js";
 import { isValidObjectId } from "mongoose";
 
 
-
 const getPlayers = async (req, res) => {
   try {
     const players = await Player.find().select({ password: 0 }).lean();

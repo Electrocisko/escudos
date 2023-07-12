@@ -2,7 +2,8 @@
 
 body {
     height: 100dvh;
-    background-color: #232323
+    background-color: #232323;
+    color: white;
 }
 
 .container {
@@ -58,7 +59,7 @@ background-color: #907ad6;
     display: none;
 }
 
-h1 {
+header {
     text-align: center;
     color: whitesmoke
 }
