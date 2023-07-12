@@ -109,7 +109,7 @@ const checkClub = (e) => {
   counter++;
   if (e.target.innerText == randomClub.name) {
     Toastify({
-      text: "Correcto!",
+      text: "Bien",
       style: {
         width: "70px",
       },
@@ -119,7 +119,7 @@ const checkClub = (e) => {
     good++;
   } else {
     Toastify({
-      text: "Equivocado",
+      text: "Mal",
       style: {
         background: "linear-gradient(to right, #ff6242, #ff4122)",
         color: "black",
