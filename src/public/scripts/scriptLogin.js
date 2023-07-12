@@ -16,7 +16,6 @@ form.addEventListener('submit',evt=>{
             "Content-Type":"application/json"
         }
     }).then(result=>result.json()).then(data=>{
-        console.log(data)
         if (data.status=='error') { Swal.fire(data.message);} 
         else {
             location.href = '/'
