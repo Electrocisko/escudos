@@ -18,7 +18,7 @@ body {
     border-radius: 10px;
     width: 350px;
     height: 470px;
-    background-color: #b0f2b4
+    background-color: #2c2a4a
 }
 
 .card-image-container {
@@ -30,7 +30,7 @@ body {
 }
 
 button {
-    background-color: #007200;
+    background-color: #4f518c;
     color: white;
     font-weight: bold;
     border-radius: 10px;
@@ -43,7 +43,7 @@ button {
 }
 
 button:hover{
-background-color: #004b23;
+background-color: #907ad6;
    border: solid 1px rgb(64, 63, 63) ;
 }
 

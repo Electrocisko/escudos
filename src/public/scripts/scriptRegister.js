@@ -1,6 +1,5 @@
 const form = document.getElementById('register-form')
 
-
 form.addEventListener('submit',evt=>{
     evt.preventDefault();
     const nick = form.nick.value;
