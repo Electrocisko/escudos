@@ -42,9 +42,7 @@ Para mostrar las respuestas utilice toastify-js.
 
 Abierta
 
-## Insignias
 
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
 
 
 
