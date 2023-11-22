@@ -6,6 +6,7 @@ import __dirname from './helpers/utils.js';
 import viewsRouter from './routes/viewsRouter.js';
 import connection from './database/connection.js';
 import session from 'express-session';
+import recordRouter from './routes/recordRouter.js';
 
 
 const PORT = dotenvConfig.app.PORT;
@@ -31,6 +32,7 @@ connection();
 
 //routes
 app.use('/api', clubesRouter);
+app.use('/api',recordRouter);
 app.use('/',viewsRouter);
 
 app.listen(PORT, () => {

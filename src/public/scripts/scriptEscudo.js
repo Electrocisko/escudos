@@ -33,41 +33,51 @@ const logout = () => {
     });
 };
 
-const saveRecordPlayer = async (points, elapsed) => {
+const saveRecordPlayer = async (points, elpased) => {
   try {
-    const dataPlayer = await fetch(
-      `/api/players/byid/${playerData.dataset.id}`
-    );
-    const responseData = await dataPlayer.json();
-    const { recordPoints, recordTime } = responseData.data;
-    const url = `/api/players/${playerData.dataset.id}`;
-    const record = { recordPoints: points, recordTime: elapsed };
-    if (points >= recordPoints) {
-      const saveData = await fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(record),
-      });
-      const result = await saveData.json();
-      console.log(result);
-    }
-    if (points == recordPoints && recordTime > elapsed) {
-      const saveData = await fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(record),
-      });
-      const result = await saveData.json();
-      console.log(result);
-    }
+    console.log('Puntos', points);
+    console.log('Elapsed',elpased);
   } catch (error) {
     console.log(error);
   }
-};
+
+}
+
+// const saveRecordPlayer = async (points, elapsed) => {
+//   try {
+//     const dataPlayer = await fetch(
+//       `/api/players/byid/${playerData.dataset.id}`
+//     );
+//     const responseData = await dataPlayer.json();
+//     const { recordPoints, recordTime } = responseData.data;
+//     const url = `/api/players/${playerData.dataset.id}`;
+//     const record = { recordPoints: points, recordTime: elapsed };
+//     if (points >= recordPoints) {
+//       const saveData = await fetch(url, {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(record),
+//       });
+//       const result = await saveData.json();
+//       console.log(result);
+//     }
+//     if (points == recordPoints && recordTime > elapsed) {
+//       const saveData = await fetch(url, {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(record),
+//       });
+//       const result = await saveData.json();
+//       console.log(result);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
