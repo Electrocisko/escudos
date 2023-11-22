@@ -33,10 +33,38 @@ const logout = () => {
     });
 };
 
-const saveRecordPlayer = async (points, elpased) => {
+const saveRecordPlayer = async (points, elapsed) => {
   try {
-    console.log('Puntos', points);
-    console.log('Elapsed',elpased);
+    const urlRecord = `/api/record`
+    const data = await fetch(urlRecord);
+    const response = await data.json();
+    let recordPoints = 0;
+    let recordTime = 0;
+ // Defino los records en cero
+    if (response.recordData.length > 0) {
+      recordPoints = response.recordData[0].recordPoints;
+      recordTime = response.recordData[0].recordTime
+    }
+    const url = `/api/record`;
+    const record = { recordPoints: points, recordTime: elapsed };
+    if (points > recordPoints) {
+      const saveData = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(record),
+      });
+    }
+    if (points == recordPoints && recordTime > elapsed) {
+      const saveData = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(record),
+      });
+    }
   } catch (error) {
     console.log(error);
   }

@@ -7,19 +7,20 @@ router.get("/record", async (req, res) => {
   try {
     const recordData = await Record.find();
     return res.json({
-      message: "Aca va record",
+      status: "succes",
       recordData,
     });
   } catch (error) {}
 });
 
-router.post("/record", async (req, res) => {
+router.put("/record", async (req, res) => {
     try {
         const data = req.body;
         //Falta validaciones de datos
+        await Record.deleteMany(); // Borro los records anteriores
       const recordData = await Record.create(data);
       return res.json({
-        message: "Aca graba record",
+        status: "success",
         recordData
       });
     } catch (error) {}
