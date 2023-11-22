@@ -22,16 +22,10 @@ let level = 0;
 let attempts = 10;
 let good = 0;
 
-const logout = () => {
-  fetch("/api/sessions/logout")
-    .then((results) => results.json())
-    .then((data) => {
-      console.log(data);
-      setTimeout(() => {
-        window.location.reload();
-      }, "2000");
-    });
-};
+function playSound(name) {
+  let audio = new Audio(`sounds/${name}.mp3`);
+  audio.play();
+}
 
 const saveRecordPlayer = async (points, elapsed) => {
   try {
@@ -68,44 +62,7 @@ const saveRecordPlayer = async (points, elapsed) => {
   } catch (error) {
     console.log(error);
   }
-
 }
-
-// const saveRecordPlayer = async (points, elapsed) => {
-//   try {
-//     const dataPlayer = await fetch(
-//       `/api/players/byid/${playerData.dataset.id}`
-//     );
-//     const responseData = await dataPlayer.json();
-//     const { recordPoints, recordTime } = responseData.data;
-//     const url = `/api/players/${playerData.dataset.id}`;
-//     const record = { recordPoints: points, recordTime: elapsed };
-//     if (points >= recordPoints) {
-//       const saveData = await fetch(url, {
-//         method: "PUT",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(record),
-//       });
-//       const result = await saveData.json();
-//       console.log(result);
-//     }
-//     if (points == recordPoints && recordTime > elapsed) {
-//       const saveData = await fetch(url, {
-//         method: "PUT",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(record),
-//       });
-//       const result = await saveData.json();
-//       console.log(result);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 const randomIndexClub = (max, min) => {
   const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -146,6 +103,7 @@ const checkClub = (e) => {
   let add = level;
   counter++;
   if (e.target.innerText == randomClub.name) {
+    playSound('good');
     Toastify({
       text: "Bien",
       style: {
@@ -156,6 +114,7 @@ const checkClub = (e) => {
     points = points + add;
     good++;
   } else {
+    playSound('wrong');
     Toastify({
       text: "Mal",
       style: {
@@ -173,6 +132,7 @@ const checkClub = (e) => {
     //Save record points
     saveRecordPlayer(points, elapsed);
     //SweetAlert
+    playSound('game-over')
     Swal.fire({
       title: "Game Over",
       text: `${good} Correctos  en ${elapsed}'', ${points} Pts`,

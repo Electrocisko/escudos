@@ -1,6 +1,10 @@
+import { Record } from "../models/recordModel.js";
 
-const indexController = (req, res) => {
-    res.render('pages/index')
+
+const indexController = async (req, res) => {
+    let record = await Record.findOne();
+   if(!record) record = {recordPoints: 0, recordTime:0}
+    res.render('pages/index',{record})
 }
 
 

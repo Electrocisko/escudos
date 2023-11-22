@@ -3,6 +3,8 @@
 body {
     height: 100dvh;
     background-color: #232323;
+    background-image: url('https://png.pngtree.com/background/20230525/original/pngtree-soccer-stadium-with-lights-at-night-picture-image_2729290.jpg');
+    background-size: cover;
     color: white;
 }
 
