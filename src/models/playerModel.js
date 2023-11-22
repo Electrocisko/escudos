@@ -14,10 +14,6 @@ const playerSchema = new Schema({
     recordTime: {
         type: Number,
         default: 0
-    },
-    password: {
-        type: String,
-        requiered: true
     }
 })
 

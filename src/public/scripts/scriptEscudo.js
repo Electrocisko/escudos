@@ -137,11 +137,9 @@ const checkClub = (e) => {
     //SweetAlert
     Swal.fire({
       title: "Game Over",
-      showDenyButton: true,
       text: `${good} Correctos  en ${elapsed}'', ${points} Pts`,
       confirmButtonColor: "#3085d6",
-      confirmButtonText: "Volver a Jugar!",
-      denyButtonText: `Salir`,
+      confirmButtonText: "Volver a Jugar!"
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.reload();
@@ -151,7 +149,7 @@ const checkClub = (e) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        logout();
+        window.location.reload();
       }
     });
   }
